@@ -1,4 +1,5 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
@@ -17,4 +18,5 @@ app.get('/:word/:partOfSpeech', getWordAndPartOfSpeach);
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`listening on ${PORT}`));
+// app.listen(PORT, () => console.log(`listening on ${PORT}`));
+module.exports.handler = serverless(app);
